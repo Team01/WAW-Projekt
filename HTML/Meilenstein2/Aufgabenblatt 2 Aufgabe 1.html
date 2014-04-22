@@ -7,6 +7,7 @@
 <html>
   <head>
     <title>Formular</title>
+      <link rel="stylesheet" type="text/css" href="css/Aufgabe1.css"/>
 	<style type ="text/css">
 	
 	select
@@ -36,25 +37,36 @@ label {
 	<form action="">
 
 
-  	 <fieldset>
-  	   <br>	 <legend>Kontaktinformationen</legend></br>
+  	   <h1>Anmeldung</h1>
+	   
+	   <div id="Beschreibung">
+	    <p>Hier könnt ihr euch für eine Messe eurer Wahl anmelden</p>
+	    <br>
+	   </div>
   	   	 
-  	   	 <label for="vorname">
-		 
-  	   	 Vorname:
-  	   	 <input id="vorname" name="vorname" type="text"  onfocus="this.value=''" />
-  	   	 </label>
+  	       <label for="vorname">
+  	       Vorname:
+  	       <input id="vorname" name="vorname" type="text"  onfocus="this.value=''" />
+  	       </label>
+	       
   	   	 <label for="nachname">
   	   	 Nachname:
   	   	 <input id="nachname" name="nachname" type="text"  onfocus="this.value=''" />
   	   	 </label>
+		 
+  	   	 <label for="matrikelnr">
+  	   	 Matrikelnummer:
+  	   	 <input id="matrikelnr" name="matrikelnr" type="text"  onfocus="this.value=''" />
+  	   	 </label>
+		  
   	   	 <label for="email">
   	   	 E-Mail:
   	   	 <input id="email" name="email" type="text"  onfocus="this.value=''" />
   	   	 </label>
-  	   	 <label for="matrikelnr">
-  	   	 Matrikelnummer:
-  	   	 <input id="matrikelnr" name="matrikelnr" type="text"  onfocus="this.value=''" />
+		 
+		 <label for="handy">
+  	   	 Handynummer:
+  	   	 <input id="handy" name="handy" type="text"  onfocus="this.value=''" />
   	   	 </label>
 		 
 		<label for="studiengang" class="erstes">
@@ -63,31 +75,25 @@ label {
   	   	   	 <option selected="selected">IB</option>
   	   	   	 <option>UIB</option>
 			 <option>IMB</option>
-  	     </select>
-  	   	 </label>
-		 
-		 <label for="messe">
-		 
-		     <form action="radio.html">
-        <p>Messe:</p>
-        <p>
-            <input type="radio" name="messe" value="CeBIT" checked="checked"> CeBIT<br> 
-            <input type="radio" name="messe" value="ConHIT"> ConHIT<br>
-            <input type="radio" name="messe" value="WebTech"> WebTech
-        </p>
-			</form>
-
-			</label>
+		</select>
+  	   	</label>
 		
-		<label for="handy">
-  	   	 Handynummer:
-  	   	 <input id="handy" name="handy" type="text"  onfocus="this.value=''" />
-  	   	 </label>
-	</fieldset>
+		<label for="messe">
+		 <form action="radio.html">
+		 <p>Messe:</p>
+		   <p>
+	            <input type="radio" name="messe" value="CeBIT" checked="checked"> CeBIT<br> 
+		    <input type="radio" name="messe" value="ConHIT"> ConHIT<br>
+		    <input type="radio" name="messe" value="WebTech"> WebTech
+		   </p>
+		  </form>
+		</label>
+		
 
-  <input type="submit" name="start" value="speichern"/> 
 
-</form>
+       <input type="submit" name="start" value="Anmelden"/> 
+
+      </form>
 	
   
 
