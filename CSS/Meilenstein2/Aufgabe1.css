@@ -1,0 +1,35 @@
+body {background-color: rgb(153,217,234); font-family: Arial Black; font-weight: bold;}
+
+h1 { font-size: 20px }
+h2 { font-size: 12px }
+h3 { font-size: 14px }
+h4 { font-size: 16px }
+
+td { font-size: 12px}
+
+label {
+    width: 15em;
+    display: block;
+    float: left;
+    }
+
+#MesseInfos{
+    display:block;
+    text-align: center;
+    position: absolute;
+        top: 15%;
+        right: 20%;
+}
+
+#Formular {
+    position: relative;
+    left: 20%;
+}
+
+#Logo {
+   position: absolute;
+    top: 5%;
+    right: 20%;
+    
+     
+}

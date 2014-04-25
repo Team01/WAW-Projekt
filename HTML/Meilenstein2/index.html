@@ -4,69 +4,62 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Formular</title>
-    <link rel="stylesheet" type="text/css" href="CSS/Aufgabe1.css">
-	<style type ="text/css">
-	h1 { font-size: 20px }
-	h2 { font-size: 12px }
-	h3 { font-size: 14px }
-	h4 { font-size: 16px }
-	body {background-color: rgb(153,217,234) }
-	td { font-size: 12px}
-	label {
-    width: 10em;
-    display: block;
-    float: left;
-	}
-      </style>
+    <link rel="stylesheet" type="text/css" href="../../CSS/Meilenstein2/Aufgabe1.css">
+
   </head>  
-     <body>
+  <body>
+    <span id=Logo><img src="../../Bilder/LogoTeam01.png" alt="Logo" border="0" height="20px" width="70px"></span>
+    <div id=Formular>
       <h1>Anmeldung</h1>
-	 <h2>Hier k&ouml;nnt ihr euch f&uuml;r eine Messe eurer Wahl anmelden</h2>
-  	     <form action="http://martinakraus.net/hsmannheim.php"  method="get">
-		<table border="0" cellpadding="0" cellspacing="4">
-		<tr>
-      <td align="left">Vorname:</td>
-      <td><input id="vorname" name="vorname" type="text" size="25" maxlength="25"  value="Martina"></td>
-    </tr>
-    <tr>
-      <td align="left">Nachname:</td>
-      <td><input id="nachname" name="nachname" type="text" size="25" maxlength="25"  value="Bitte Nachname eingeben">
-    </tr>
-	<tr>
-      <td align="left">Matrikelnummer:</td>
-      <td><input id="matrikelnr" name="matrikelnr" type="text" size="25" maxlength="25" value="Bitte Matrikelnummer eingeben" >
-    </tr>
-	<tr>
-      <td align="left">E-Mail Adresse:</td>
-      <td><input id="email" name="email" type="text" size="25" maxlength="25"  value="m.kraus@hs-mannheim.de"></td>
-    </tr>
-	<tr>
-      <td align="left">Handynummer:</td>
-      <td><input id="handy" name="handy" type="text" size="25" maxlength="25" value="Bitte Handynummer eingeben"></td>
-    </tr>
-	<tr>
-      <td align="left">Studiengang:</td>
-      <td><select id="studiengang" name="studiengang">
+      <h2>Hier k&ouml;nnt ihr euch f&uuml;r eine Messe eurer Wahl anmelden</h2>
+      <form action="http://martinakraus.net/hsmannheim.php"  method="get">
+       <table border="0" cellpadding="0" cellspacing="4">
+	 <tr>
+	  <td align="left">Vorname:</td>
+	  <td><input id="vorname" name="vorname" type="text" size="25" maxlength="25"  value="Martina"></td>
+         </tr>
+         <tr>
+	  <td align="left">Nachname:</td>
+	  <td><input id="nachname" name="nachname" type="text" size="25" maxlength="25"  value="Bitte Nachname eingeben">
+         </tr>
+         <tr>
+	  <td align="left">Matrikelnummer:</td>
+          <td><input id="matrikelnr" name="matrikelnr" type="text" size="25" maxlength="25" value="Bitte Matrikelnummer eingeben" >
+         </tr>
+	 <tr>
+	  <td align="left">E-Mail Adresse:</td>
+	  <td><input id="email" name="email" type="text" size="25" maxlength="25"  value="m.kraus@hs-mannheim.de"></td>
+         </tr>
+	 <tr>
+	  <td align="left">Handynummer:</td>
+	  <td><input id="handy" name="handy" type="text" size="25" maxlength="25" value="Bitte Handynummer eingeben"></td>
+	 </tr>
+	 <tr>
+	  <td align="left">Studiengang:</td>
+	  <td><select id="studiengang" name="studiengang">
   	   	   	 <option selected="selected">IB</option>
   	   	   	 <option>UIB</option>
 			 <option>IMB</option>
   	     </select></td>
-    </tr>
-	<tr>
-      <td align="left">Messe:</td>
-      <td><input type="radio" name="messe" value="CeBIT" checked="checked"> CeBIT<br> 
+         </tr>
+	 <tr>
+	  <td align="left">Messe:</td>
+	  <td><input type="radio" name="messe" value="CeBIT" checked="checked"> CeBIT<br> 
             <input type="radio" name="messe" value="ConHIT"> ConHIT<br>
             <input type="radio" name="messe" value="WebTech"> WebTech</td>
-    </tr>
-  </table>
-  <input type="submit" name="start" value="Anmelden"> 
-</form>  
-<h3>Messe Infos</h3>
-<h2>Bitte auf eine Messe eurer Wahl klicken um weitere Info's zu bekommen</h2>
-<a href="Cebit.html">CeBit</a> <br>
- <a href="Conhit.html">ConIT</a> <br>
-  <a href="Webtechcon.html">WebTech Con</a><br>
-    </body>
+	 </tr>
+       </table>
+       <input type="submit" name="start" value="Anmelden"> 
+      </form>
+    </div>
+    <div id=MesseInfos>
+    <h3>Messe Infos</h3>
+    <h2>Bitte auf eine Messe eurer Wahl klicken um weitere Info's zu bekommen</h2>
+       <a href="Cebit.html">CeBit</a> <br>
+       <a href="Conhit.html">ConIT</a> <br>
+       <a href="Webtechcon.html">WebTech Con</a><br>
+    </div>
+  </body>
 </html>
 
 
