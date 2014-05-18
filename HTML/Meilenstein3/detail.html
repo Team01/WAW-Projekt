@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Detail</title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/Meilenstein3/detailscss.css">
+      
+      <script type="text/javascript">
+function Kosten () { 
+  document.getElementById('Kosten').style.visibility = "visible";
+  document.getElementById('teilnehmer').style.visibility = "hidden";
+  document.getElementById('farbe').style.color="#FFFFFF";
+  document.getElementById('messe').style.backgroundColor="blue" ;
+  document.getElementById('personen').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('schrift').style.color="blue";
+}
+
+function Teilnehmer () {
+  document.getElementById('Kosten').style.visibility = "hidden";
+  document.getElementById('teilnehmer').style.visibility = "visible";
+  document.getElementById('schrift').style.color="#FFFFFF";
+  document.getElementById('messe').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('personen').style.backgroundColor="blue" ;
+  document.getElementById('farbe').style.color="blue";
+}
+
+</script>
+      
+      
+  </head>
+  <body onload="javascript:Kosten()">
+    
+    <h1 align="center"> Details zur Anmeldung</h1>
+    <div id="ueberschrift">
+    <table border="1" align="center" id="menu">
+        <tr>
+            <th  width=300px id="messe" > <a href="javascript:Kosten()"> <span id="farbe">Kosten der Messe</span></a> </th>
+            <th width=300px  id="personen" > <a href="javascript:Teilnehmer()"> <span id="schrift">Teilnehmer</span> </a> </th>
+        </tr>
+    </table>
+    <br>
+      <div id="tabele1">
+    <table border="1" align="center" id="Kosten">
+      <tr>
+        <th width=200px>
+          Messe
+        </th>
+        <th width=200px>
+          Selbskosten
+        </th>
+      </tr>
+      <tr>
+        <td>
+        
+        </td>
+        <td>
+          
+        </td>
+      </tr>
+            <tr>
+        <td>
+          
+        </td>
+        <td>
+          
+        </td>
+      </tr>
+        <tr>
+        <td>
+          
+        </td>
+        <td>
+          
+        </td>
+      </tr>
+    </table>
+    </div>
+      
+    <div id="tabele2">
+    <table  border="1" align="center" id="teilnehmer">
+      <tr>
+        <th width=200px>
+          Name
+        </th>
+        <th width=200px>
+          Vorname
+        </th>
+         <th width=200px>
+          Studiengang
+        </th>
+        <th width=200px>
+          eMail
+        </th>
+      </tr>
+       <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>  
+       </tr>
+       <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>  
+       </tr>
+       <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>  
+       </tr> 
+    </table>
+    </div>
+  </body>

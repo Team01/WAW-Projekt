@@ -1,0 +1,38 @@
+body {background-color: rgb(153,217,234); font-family: Arial Black; font-weight: bold;}
+
+h1 { font-size: 20px }
+h2 { font-size: 12px }
+h3 { font-size: 14px }
+h4 { font-size: 16px }
+
+td { font-size: 12px}
+
+#ueberschrift {
+    position: relative;
+    text-align: center;
+    
+    }
+    
+#tabele1{
+    position: absolute;
+    text-align: center;
+    top: 65%;
+    right: 35%;
+
+    }
+#tabele2{
+    position: absolute;
+    text-align: center;
+        top: 65%;
+        right: 20%;
+    } 
+
+
+#Logo {
+   position: absolute;
+    top: 5%;
+    right: 20%;
+    
+     
+}
+
