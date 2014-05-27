@@ -10,28 +10,35 @@ td { font-size: 12px}
 #ueberschrift {
     position: relative;
     text-align: center;
-    
     }
     
-#tabele1{
-    position: absolute;
-    text-align: center;
-    top: 100px;
-    right: 35%;
+    
+#Tabellen{
+    position: relative;
+    }
+#tabelleKosten,#tabelleCebit,#tabelleConhit,#tabelleWebTechCon {
+  position: absolute;
+  top:20px;
+  left: 50%;
+  margin-left: -250px;
+  height:100px;
+  width:500px;
+  text-align: center;
+}
 
-    }
-#tabele2{
-    position: absolute;
-    text-align: center;
-        top: 100px;
-        right: 20%;
-    } 
+#tabelleCebit, #tabelleConhit, #tabelleWebTechCon, #untermenue{
+    visibility: hidden;
+}
 
 
 #Logo {
-   position: absolute;
-    top: 5%;
-    right: 20%;   
+    float: right; 
+}
+
+#zurueck {
+    position: relative;
+    left:20%;
+    bottom: 20%;
 }
 .classname {
 	-moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;
@@ -67,10 +74,7 @@ td { font-size: 12px}
 	text-decoration:none;
 	text-align:center;
 	text-shadow:1px 1px 0px #528ecc;
-        position: absolute;
-        text-align: center;
-	left: 200px;
-        bottom: 30%;
+
         
 }
 .classname:hover {

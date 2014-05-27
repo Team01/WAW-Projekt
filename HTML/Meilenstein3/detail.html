@@ -9,7 +9,47 @@
     <link script type =text/javascript" src ="/teilnehmerCebit.js">
     <link script type =text/javascript" src ="/teilnehmerWebTechCon.js">
       
-      <script type="text/javascript">
+      
+    <script type="text/javascript">
+
+function start() {
+   node = document.getElementById("Tabellen");
+   node.appendChild(erstelleTabelle(überschriftenKosten,tabelleninhaltKosten));
+   node.appendChild(erstelleTabelle(überschriftenTeilnehmer,tabelleninhaltCebit));
+   node.appendChild(erstelleTabelle(überschriftenTeilnehmer,tabelleninhaltConhit));
+   node.appendChild(erstelleTabelle(überschriftenTeilnehmer,tabelleninhaltWebTechCon));
+}
+function erstelleTabelle (überschriften,inhalt) {
+  var myTable = document.createElement("table");
+  var mytablehead = document.createElement("thead");
+  var mytablebody = document.createElement("tbody");
+  
+
+  currentRow = document.createElement("th");
+  for (var i = 0; überschriften.length > i; i++) {
+    currentCell = document.createElement("td");
+    currentText = document.createTextNode(überschriften[i]);
+    currentCell.appendChild(currentText);
+    currentRow.appendChild(currentCell);
+  }
+  mytablehead.appendChild(currentRow);
+  myTable.appendChild(mytablehead);
+  
+  for (var i = 0; i > (inhalt.length/überschriften.length); i++) {
+      currentRow = document.createElement("tr");
+      for (var j = 0; j > überschriften.length; j++) {
+        currentCell = document.createElement("td");
+        currentText = document.createTextNode(inhalt[(i * überschriften.length) + j ])
+        currentCell.appendChild(currentText);
+        currentRow.appendChild(currentCell);
+      }
+      mytablebody.appendChild(currentRow);
+  }
+  myTable.appendChild(mytablebody);
+  return myTable;
+  
+}
+        
 function Kosten () { 
   document.getElementById('Kosten').style.visibility = "visible";
   document.getElementById('teilnehmer').style.visibility = "hidden";
@@ -41,122 +81,7 @@ function Teilnehmer () {
         </tr>
     </table>
     </div>
-    <br>
-      <div id="tabele1">
-    <table border="1" align="center" id="Kosten">
-      <tr>
-        <th width=200px>
-          Messe
-        </th>
-        <th width=200px>
-          Selbskosten
-        </th>
-      </tr>
-      <tr>
-        <td>
-        
-        </td>
-        <td>
-          
-        </td>
-      </tr>
-            <tr>
-        <td>
-          
-        </td>
-        <td>
-          
-        </td>
-      </tr>
-        <tr>
-        <td>
-          
-        </td>
-        <td>
-          
-        </td>
-      </tr>
-    </table>
-    </div>
-      
-    <div id="tabele2">
-    <table  border="1" align="center" id="teilnehmer">
-      <tr>
-        <th width=200px>
-          Name
-        </th>
-        <th width=200px>
-          Vorname
-        </th>
-         <th width=200px>
-          Studiengang
-        </th>
-        <th width=200px>
-          eMail
-        </th>
-      </tr>
-       <tr>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>  
-       </tr>
-       <tr>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>  
-       </tr>
-       <tr>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>  
-       </tr>
-              <tr>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>  
-       </tr>
-       <tr>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>  
-       </tr>
-       <tr>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>  
-       </tr> 
-    </table>
-    </div>
+ 
     <a href="javascript:window.back()"  class="classname">Zur&uuml;ck</a>
   </body>
 </html>

@@ -1,0 +1,50 @@
+{
+    "ueberschriftenTeilnehmer": [
+        "Name",
+        "Vorname",
+        "Studiengang",
+        "eMail"
+    ],
+    "tabelleninhaltCebit": [
+        "Ent",
+        "Thilo",
+        "IB",
+        "t.ent@gmail.de",
+        "Kraus",
+        "Martina",
+        "IB",
+        "m.kraus@hs-mannheim.de",
+        "Smits",
+        "Thomas",
+        "UIB",
+        "smits@hs-mannheim.de"
+    ],
+    "tabelleninhaltConhit": [
+        "Groeschel",
+        "Michael",
+        "UIB",
+        "m.groeschel@hs-mannheim.de",
+        "Schmuecker",
+        "Paul",
+        "IMB",
+        "p.schmuecker@hs-mannheim.de",
+        "felsenheimer",
+        "jan",
+        "IB",
+        "j.felsenheimer@diebestebaendderwelt.de"
+    ],
+    "tabelleninhaltWebTechCon": [
+        "Spies",
+        "Marcell",
+        "IB",
+        "m.spies@gmail.de",
+        "Hoppe",
+        "Johannes",
+        "UMB",
+        "j.hoppe@gmx.de",
+        "Hoffmeister",
+        "Johannes",
+        "UIB",
+        "cessor@gmail.de"
+    ]
+}
