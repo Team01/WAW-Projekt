@@ -4,84 +4,148 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Detail</title>
     <link rel="stylesheet" type="text/css" href="../../CSS/Meilenstein3/detailscss.css">
-    <link script type =text/javascript" src ="/messekosten.js">
-    <link script type =text/javascript" src ="/teilnehmerConhit.js">
-    <link script type =text/javascript" src ="/teilnehmerCebit.js">
-    <link script type =text/javascript" src ="/teilnehmerWebTechCon.js">
-      
-      
+    <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript">
-
+ 
+$(document).ready(function(){
+     start()
+    })
+     
 function start() {
-   node = document.getElementById("Tabellen");
-   node.appendChild(erstelleTabelle(überschriftenKosten,tabelleninhaltKosten));
-   node.appendChild(erstelleTabelle(überschriftenTeilnehmer,tabelleninhaltCebit));
-   node.appendChild(erstelleTabelle(überschriftenTeilnehmer,tabelleninhaltConhit));
-   node.appendChild(erstelleTabelle(überschriftenTeilnehmer,tabelleninhaltWebTechCon));
+  datenInTabelle();
+  }
+function datenInTabelle() {
+  
+  var kostenMesse;
+  var teilnehmerMesse;
+  node = document.getElementById("Tabellen");
+  
+  $.getJSON("kostenMesse.json",function(json) {
+      kostenMesse = json;
+      tabelle1 = erstelleTabelle(kostenMesse.ueberschriftenKosten,kostenMesse.tabelleninhaltKosten);
+      tabelle1.setAttribute("id","tabelleKosten");
+        node.appendChild(tabelle1);
+        $.getJSON("teilnehmerMessen.json",function(data) {
+        teilnehmerMesse = data;
+        tabelle2 = erstelleTabelle(teilnehmerMesse.ueberschriftenTeilnehmer,teilnehmerMesse.tabelleninhaltCebit);
+        tabelle2.setAttribute("id","tabelleCebit");
+        tabelle3 = erstelleTabelle(teilnehmerMesse.ueberschriftenTeilnehmer,teilnehmerMesse.tabelleninhaltConhit);
+        tabelle3.setAttribute("id","tabelleConhit");
+        tabelle4 = erstelleTabelle(teilnehmerMesse.ueberschriftenTeilnehmer,teilnehmerMesse.tabelleninhaltWebTechCon);
+        tabelle4.setAttribute("id","tabelleWebTechCon");
+        node.appendChild(tabelle2);
+        node.appendChild(tabelle3);
+        node.appendChild(tabelle4);
+        kosten();
+    });
+  });
+
 }
-function erstelleTabelle (überschriften,inhalt) {
+function erstelleTabelle (ueberschriften,inhalt) {
   var myTable = document.createElement("table");
   var mytablehead = document.createElement("thead");
   var mytablebody = document.createElement("tbody");
   
-
-  currentRow = document.createElement("th");
-  for (var i = 0; überschriften.length > i; i++) {
-    currentCell = document.createElement("td");
-    currentText = document.createTextNode(überschriften[i]);
+  currentRow = document.createElement("tr");
+  for (var i = 0; ueberschriften.length > i; i++) {
+    currentCell = document.createElement("th");
+    currentText = document.createTextNode(ueberschriften[i]);
     currentCell.appendChild(currentText);
     currentRow.appendChild(currentCell);
   }
   mytablehead.appendChild(currentRow);
   myTable.appendChild(mytablehead);
   
-  for (var i = 0; i > (inhalt.length/überschriften.length); i++) {
+  for (var i = 0; i < (inhalt.length/ueberschriften.length); i++) {
       currentRow = document.createElement("tr");
-      for (var j = 0; j > überschriften.length; j++) {
+      for (var j = 0; j < ueberschriften.length; j++) {
         currentCell = document.createElement("td");
-        currentText = document.createTextNode(inhalt[(i * überschriften.length) + j ])
+        currentText = document.createTextNode(inhalt[(i * ueberschriften.length) + j ])
         currentCell.appendChild(currentText);
         currentRow.appendChild(currentCell);
       }
       mytablebody.appendChild(currentRow);
   }
   myTable.appendChild(mytablebody);
+  myTable.setAttribute("border",1);
   return myTable;
   
 }
         
-function Kosten () { 
-  document.getElementById('Kosten').style.visibility = "visible";
-  document.getElementById('teilnehmer').style.visibility = "hidden";
+function kosten () { 
+  document.getElementById('tabelleKosten').style.visibility = "visible";
+  document.getElementById('tabelleCebit').style.visibility = "hidden";
+  document.getElementById('tabelleConhit').style.visibility = "hidden";
+  document.getElementById('tabelleWebTechCon').style.visibility = "hidden";
+  document.getElementById('untermenue').style.visibility = "hidden";
+  
   document.getElementById('farbe').style.color="#FFFFFF";
   document.getElementById('messe').style.backgroundColor="blue" ;
   document.getElementById('personen').style.backgroundColor="rgb(153,217,234)";
-  document.getElementById('schrift').style.color="blue";
+  document.getElementById('schrift').style.color="black";
 }
+function cebit () {
+  document.getElementById('tabelleCebit').style.visibility = "visible";
+  document.getElementById('untermenue').style.visibility = "visible";
+  document.getElementById('tabelleKosten').style.visibility = "hidden";
+  document.getElementById('tabelleConhit').style.visibility = "hidden";
+  document.getElementById('tabelleWebTechCon').style.visibility = "hidden";
+  
+  document.getElementById('farbe').style.color="black";
+  document.getElementById('messe').style.backgroundColor="rgb(153,217,234)" ;
+  document.getElementById('personen').style.backgroundColor="blue";
+  document.getElementById('schrift').style.color="white";
+  document.getElementById('Cebit').style.backgroundColor="#6495ed";
+  document.getElementById('Conhit').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('WebTechCon').style.backgroundColor="rgb(153,217,234)";
+  
+}
+function conhit () {
+  document.getElementById('tabelleConhit').style.visibility = "visible";
+  document.getElementById('tabelleCebit').style.visibility = "hidden";
+  document.getElementById('tabelleWebTechCon').style.visibility = "hidden";
+  
+  document.getElementById('Cebit').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('Conhit').style.backgroundColor="#6495ed";
+  document.getElementById('WebTechCon').style.backgroundColor="rgb(153,217,234)";
 
-function Teilnehmer () {
-  document.getElementById('Kosten').style.visibility = "hidden";
-  document.getElementById('teilnehmer').style.visibility = "visible";
-  document.getElementById('schrift').style.color="#FFFFFF";
-  document.getElementById('messe').style.backgroundColor="rgb(153,217,234)";
-  document.getElementById('personen').style.backgroundColor="blue" ;
-  document.getElementById('farbe').style.color="blue";
+}
+function webTechCon () {
+  document.getElementById('tabelleWebTechCon').style.visibility = "visible";
+  document.getElementById('tabelleCebit').style.visibility = "hidden";
+  document.getElementById('tabelleConhit').style.visibility = "hidden";
+  
+  document.getElementById('Cebit').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('Conhit').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('WebTechCon').style.backgroundColor="#6495ed";
+
 }
 </script>  
   </head>
-  <body onload="javascript:Kosten()">
-    <span id=Logo><img src="../../Bilder/LogoTeam01.png" alt="Logo" border="0" height="20px" width="70px"></span>
+  <body onload="javascript:kosten()">
+        <span id=Logo><img src="../../Bilder/LogoTeam01.png" alt="Logo" border="0" height="20px" width="70px"></span>
     
     <h1 align="center"> Details zur Anmeldung</h1>
     <div id="ueberschrift" >
     <table border="1" align="center" id="menu">
         <tr>
-            <th  width=300px id="messe" > <a href="javascript:Kosten()"> <span id="farbe">Kosten der Messe</span></a> </th>
-            <th width=300px  id="personen" > <a href="javascript:Teilnehmer()"> <span id="schrift">Teilnehmer</span> </a> </th>
+            <th  width=300px id="messe" > <a href="javascript:kosten()"> <span id="farbe">Kosten der Messe</span></a> </th>
+            <th width=300px  id="personen" > <a href="javascript:cebit()"> <span id="schrift">Teilnehmer</span> </a> </th>
+        </tr>
+    </table>
+    <table border="1" align="center" id="untermenue">
+        <tr>
+            <th width=200px id="Cebit"> <a href="javascript:cebit()"> <span id="farbeCebit">Cebit</span></a> </th>
+            <th width=200px  id="Conhit" > <a href="javascript:conhit()"> <span id="farbeConhit">Conhit</span> </a> </th>
+            <th width=200px  id="WebTechCon"> <a href="javascript:webTechCon()"> <span id="farbeWebTechCon">WebTechCon</span> </a> </th>
         </tr>
     </table>
     </div>
- 
-    <a href="javascript:window.back()"  class="classname">Zur&uuml;ck</a>
+    <div id="Tabellen" align ="center">   
+    </div>
+    
+    <div>
+    <a href="javascript:window.back()" id="zurueck" class="classname">Zur&uuml;ck</a>
+    </div>
   </body>
 </html>
