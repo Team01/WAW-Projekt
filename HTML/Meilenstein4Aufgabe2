@@ -1,0 +1,145 @@
+<head><title><head><title>Formular</title>
+<style type ="text/css">
+	
+	h1 { font-size: 20px }
+	h2 { font-size: 12px }
+	h3 { font-size: 14px }
+	h4 { font-size: 16px }
+	body {background-color: rgb(153,217,234) }
+	td { font-size: 12px}
+
+	
+	
+	label {
+	
+    width: 10em;
+    display: block;
+    float: left;
+	}
+	
+
+	</style>
+<script type="text/javascript">
+
+function checkForm() {
+
+  var strFehler='';
+
+  if (document.forms[0].vorname.value=="")
+
+    strFehler += "Feld Vorname ist leer\n";
+
+  if (document.forms[0].nachname.value=="")
+
+    strFehler += "Feld Nachname ist leer\n";
+
+	if (document.forms[0].matrikelnr.value=="")
+
+    strFehler += "Feld Matrikelnummer ist leer\n";
+	
+
+	
+	if (document.forms[0].handy.value=="") 
+
+	strFehler += "Feld Handy ist leer\n"; 
+	
+  if (!validEmail(document.forms[0].email.value)) {
+
+    strFehler += "In der E-Mail-Adresse steckt der Wurm drin!\n";
+	
+  }
+  
+
+ 
+
+  if (strFehler.length>0) {
+
+    alert("Einige Eingaben sind fehlerhaft. Bitte &Uuml;berpr&uuml;fen Sie ihre Eingaben: \n\n"+strFehler);
+
+    return(false);
+
+  }
+
+}
+
+function validEmail(email) {
+
+  var strReg = "^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$";
+
+  var regex = new RegExp(strReg);
+
+  return(regex.test(email));
+
+}
+
+</script>
+
+</head>
+
+ <body>
+
+	
+
+     <h1>Anmeldung</h1>
+	 <h2>Hier k&ouml;nnt ihr euch f&uuml;r eine Messe eurer Wahl anmelden</h2>
+  	   	 
+		<label>
+  	   	 
+  	<form action='index.php' onsubmit='return checkForm()'>
+		<table border="0" cellpadding="0" cellspacing="4">
+		<tr>
+      <td align="left">Vorname:</td>
+      <td><input id="vorname" name="vorname" type="text" size="25" maxlength="25"  value="Martina"></td>
+    </tr>
+    <tr>
+      <td align="left">Nachname:</td>
+      <td><input id="nachname" name="nachname" type="text" size="25" maxlength="25"  value="Bitte Nachname eingeben">
+    </tr>
+	<tr>
+      <td align="left">Matrikelnummer:</td>
+      <td><input id="matrikelnr" name="matrikelnr" type="text" size="25" maxlength="25" value="Bitte Matrikelnummer eingeben" >
+    </tr>
+	<tr>
+      <td align="left">E-Mail Adresse:</td>
+      <td><input id="email" name="email" type="text" size="25" maxlength="25"  value="m.kraus@hs-mannheim.de"></td>
+    </tr>
+	<tr>
+      <td align="left">Handynummer:</td>
+      <td><input id="handy" name="handy" type="text" size="25" maxlength="25" value="Bitte Handynummer eingeben"></td>
+    </tr>
+	<tr>
+      <td align="left">Studiengang:</td>
+      <td><select id="studiengang" name="studiengang">
+  	   	   	 <option selected="selected">IB</option>
+  	   	   	 <option>UIB</option>
+			 <option>IMB</option>
+  	     </select></td>
+    </tr>
+	<tr>
+      <td align="left">Messe:</td>
+      <td><input type="radio" name="messe" value="CeBIT" checked="checked"> CeBIT<br> 
+            <input type="radio" name="messe" value="ConHIT"> ConHIT<br>
+            <input type="radio" name="messe" value="WebTech"> WebTech</td>
+    </tr>
+  </table>
+		
+	
+
+  <input type="submit" name="start" value="Anmelden"/> 
+
+
+</label>
+</form>  
+
+
+<h3>Messe Infos</h3>
+<h2>Bitte auf eine Messe eurer Wahl klicken um weitere Info's zu bekommen</h2>
+
+<a href="Cebit.html">CeBit</a> <br>
+ <a href="ConIT.html">ConIT</a> <br>
+  <a href="WebTech Con.html">WebTech Con</a><br>
+
+
+		
+    </body>
+</html>
