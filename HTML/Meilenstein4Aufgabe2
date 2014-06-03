@@ -1,4 +1,6 @@
-<head><title><head><title>Formular</title>
+<head>
+	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Formular</title>
 <style type ="text/css">
 	
 	h1 { font-size: 20px }
@@ -23,43 +25,69 @@
 
 function checkForm() {
 
-  var strFehler='';
-
-  if (document.forms[0].vorname.value=="")
-
-    strFehler += "Feld Vorname ist leer\n";
-
-  if (document.forms[0].nachname.value=="")
-
-    strFehler += "Feld Nachname ist leer\n";
-
-	if (document.forms[0].matrikelnr.value=="")
-
-    strFehler += "Feld Matrikelnummer ist leer\n";
+	var strFehler='';
 	
+	if (document.forms[0].vorname.value==""){
 
-	
-	if (document.forms[0].handy.value=="") 
+	strFehler += "Feld Vorname ist leer\n";
+	vorname.style.border="1px solid red";
+	document.Formular.vorname.focus();
+	}
+	if (!isNaN(document.forms[0].vorname.value)) {
+	strFehler += "Bitte im Feld Vorname nur Buchstaben eingeben\n";
+	vorname.style.border="1px solid red";
+	document.Formular.vorname.focus();
+	}
 
-	strFehler += "Feld Handy ist leer\n"; 
-	
-  if (!validEmail(document.forms[0].email.value)) {
-
-    strFehler += "In der E-Mail-Adresse steckt der Wurm drin!\n";
-	
-  }
+	if (document.forms[0].nachname.value=="")
+	{
+	strFehler += "Feld Nachname ist leer\n"; 
+	nachname.style.border="1px solid red";
+	document.Formular.nachname.focus();
+	}
   
+	if (!isNaN(document.forms[0].nachname.value)) {
+	strFehler += "Bitte im Feld Nachname nur Buchstaben eingeben\n";
+	nachname.style.border="1px solid red";
+	document.Formular.nachname.focus();
+	}
+  
+	if (document.forms[0].matrikelnr.value==""){
 
- 
+	strFehler += "Feld Matrikelnummer ist leer\n";
+	matrikelnr.style.border="1px solid red";
+	document.Formular.matrikelnr.focus();}
+	
+	if (isNaN(document.forms[0].matrikelnr.value)) {
+	strFehler += "Bitte im Feld Matrikelnummer nur Zahlen eingeben bsp: 1123456\n";
+	matrikelnr.style.border="1px solid red";
+	document.Formular.matrikelnr.focus();		
+	}
+		
+	if (document.forms[0].handy.value=="") {
 
+	strFehler += "Feld Handy ist leer\n";
+	handy.style.border="1px solid red";
+	document.Formular.handy.focus();
+	}
+	
+	if (isNaN(document.forms[0].handy.value)) {
+	strFehler += "Bitte im Feld Handy nur Zahlen eingeben bsp: 0176556301\n";
+	handy.style.border="1px solid red";
+	document.Formular.handy.focus();
+		
+	}
+  
+	if (!validEmail(document.forms[0].email.value)) {
+	strFehler += "E-Mail-Adresse ist fehlerhaft\n";
+    	email.style.border="1px solid red";
+	document.Formular.email.focus();
+  }
   if (strFehler.length>0) {
-
-    alert("Einige Eingaben sind fehlerhaft. Bitte &Uuml;berpr&uuml;fen Sie ihre Eingaben: \n\n"+strFehler);
-
-    return(false);
+  alert(unescape("Einige Eingaben sind fehlerhaft. Bitte %FCberpr%FCfen Sie ihre Eingaben : \n\n"+strFehler));
+  return(false);
 
   }
-
 }
 
 function validEmail(email) {
@@ -85,7 +113,7 @@ function validEmail(email) {
   	   	 
 		<label>
   	   	 
-  	<form action='index.php' onsubmit='return checkForm()'>
+  	<form name="Formular" action="http://martinakraus.net/hsmannheim.php"  onsubmit='return checkForm()'>
 		<table border="0" cellpadding="0" cellspacing="4">
 		<tr>
       <td align="left">Vorname:</td>
