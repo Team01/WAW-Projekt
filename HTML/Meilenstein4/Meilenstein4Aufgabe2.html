@@ -6,16 +6,28 @@
 <script type="text/javascript">
 function checkForm() {
 	var strFehler='';
-
-	if (document.forms[0].vorname.value==""){
-
-	strFehler += "Feld Vorname ist leer\n";
 	
+	function validName(vorname) {
+	var strRegvorname = "^([a-zA-Z])+$";
+	var regex = new RegExp(strRegvorname);
+	return(regex.test(vorname));
+	}
+	if (!validName(document.forms[0].vorname.value)) {
+	strFehler += "Vorname ist Falsch\n";
 	document.Formular.vorname.focus();
 	}
-	if (!isNaN(document.forms[0].vorname.value)) {
-	strFehler += "Bitte im Feld Vorname nur Buchstaben eingeben\n";
 	
+	if (document.forms[0].vorname.value==""){
+	strFehler += "Feld Vorname ist leer\n";
+	document.Formular.vorname.focus();
+	}
+	function validnachname(nachname) {
+	var strRegnachname = "^([a-zA-Z])+$";
+	var regex = new RegExp(strRegnachname);
+	return(regex.test(nachname));
+	}
+	if (!validName(document.forms[0].nachname.value)) {
+	strFehler += "Nachname ist Falsch\n";
 	document.Formular.vorname.focus();
 	}
 
@@ -23,12 +35,6 @@ function checkForm() {
 	{
 	strFehler += "Feld Nachname ist leer\n"; 
 
-	document.Formular.nachname.focus();
-	}
-  
-	if (!isNaN(document.forms[0].nachname.value)) {
-	strFehler += "Bitte im Feld Nachname nur Buchstaben eingeben\n";
-	
 	document.Formular.nachname.focus();
 	}
   
@@ -92,23 +98,23 @@ function validEmail(email) {
 	<table border="0" cellpadding="0" cellspacing="4">
 		<tr>
       <td align="left">Vorname:</td>
-      <td><input id="vorname" name="vorname" type="text" size="25" maxlength="25"  value="Martina"></td>
+      <td><input id="vorname" name="vorname" type="text" size="25" maxlength="25"  value=""></td>
     </tr>
     <tr>
       <td align="left">Nachname:</td>
-      <td><input id="nachname" name="nachname" type="text" size="25" maxlength="25"  value="Bitte Nachname eingeben">
+      <td><input id="nachname" name="nachname" type="text" size="25" maxlength="25"  value="">
     </tr>
 	<tr>
       <td align="left">Matrikelnummer:</td>
-      <td><input id="matrikelnr" name="matrikelnr" type="text" size="25" maxlength="7" value="Bitte Matrikelnummer eingeben" >
+      <td><input id="matrikelnr" name="matrikelnr" type="text" size="25" maxlength="7" value="" >
     </tr>
 	<tr>
       <td align="left">E-Mail Adresse:</td>
-      <td><input id="email" name="email" type="text" size="25" maxlength="25"  value="m.kraus@hs-mannheim.de"></td>
+      <td><input id="email" name="email" type="text" size="25" maxlength="25"  value=""></td>
     </tr>
 	<tr>
       <td align="left">Handynummer:</td>
-      <td><input id="handy" name="handy" type="text" size="25" maxlength="12" value="Bitte Handynummer eingeben"></td>
+      <td><input id="handy" name="handy" type="text" size="25" maxlength="12" value=""></td>
     </tr>
 	<tr>
       <td align="left">Studiengang:</td>
