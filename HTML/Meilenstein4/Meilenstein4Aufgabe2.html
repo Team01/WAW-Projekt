@@ -6,61 +6,61 @@
 <script type="text/javascript">
 function checkForm() {
 	var strFehler='';
-	
+
 	if (document.forms[0].vorname.value==""){
 
 	strFehler += "Feld Vorname ist leer\n";
-	vorname.style.border="1px solid red";
+	
 	document.Formular.vorname.focus();
 	}
 	if (!isNaN(document.forms[0].vorname.value)) {
 	strFehler += "Bitte im Feld Vorname nur Buchstaben eingeben\n";
-	vorname.style.border="1px solid red";
+	
 	document.Formular.vorname.focus();
 	}
 
 	if (document.forms[0].nachname.value=="")
 	{
 	strFehler += "Feld Nachname ist leer\n"; 
-	nachname.style.border="1px solid red";
+
 	document.Formular.nachname.focus();
 	}
   
 	if (!isNaN(document.forms[0].nachname.value)) {
 	strFehler += "Bitte im Feld Nachname nur Buchstaben eingeben\n";
-	nachname.style.border="1px solid red";
+	
 	document.Formular.nachname.focus();
 	}
   
 	if (document.forms[0].matrikelnr.value==""){
 
 	strFehler += "Feld Matrikelnummer ist leer\n";
-	matrikelnr.style.border="1px solid red";
-	document.Formular.matrikelnr.focus();}
 	
+	document.Formular.matrikelnr.focus();}
+
 	if (isNaN(document.forms[0].matrikelnr.value)) {
 	strFehler += "Bitte im Feld Matrikelnummer nur Zahlen eingeben bsp: 1123456\n";
-	matrikelnr.style.border="1px solid red";
+
 	document.Formular.matrikelnr.focus();		
 	}
-		
+
 	if (document.forms[0].handy.value=="") {
 
 	strFehler += "Feld Handy ist leer\n";
-	handy.style.border="1px solid red";
+
 	document.Formular.handy.focus();
 	}
-	
+
 	if (isNaN(document.forms[0].handy.value)) {
 	strFehler += "Bitte im Feld Handy nur Zahlen eingeben bsp: 0176556301\n";
-	handy.style.border="1px solid red";
+	
 	document.Formular.handy.focus();
-		
+
 	}
   
 	if (!validEmail(document.forms[0].email.value)) {
 	strFehler += "E-Mail-Adresse ist fehlerhaft\n";
-    	email.style.border="1px solid red";
+    
 	document.Formular.email.focus();
   }
   if (strFehler.length>0) {
@@ -100,7 +100,7 @@ function validEmail(email) {
     </tr>
 	<tr>
       <td align="left">Matrikelnummer:</td>
-      <td><input id="matrikelnr" name="matrikelnr" type="text" size="25" maxlength="25" value="Bitte Matrikelnummer eingeben" >
+      <td><input id="matrikelnr" name="matrikelnr" type="text" size="25" maxlength="7" value="Bitte Matrikelnummer eingeben" >
     </tr>
 	<tr>
       <td align="left">E-Mail Adresse:</td>
@@ -108,7 +108,7 @@ function validEmail(email) {
     </tr>
 	<tr>
       <td align="left">Handynummer:</td>
-      <td><input id="handy" name="handy" type="text" size="25" maxlength="25" value="Bitte Handynummer eingeben"></td>
+      <td><input id="handy" name="handy" type="text" size="25" maxlength="12" value="Bitte Handynummer eingeben"></td>
     </tr>
 	<tr>
       <td align="left">Studiengang:</td>
@@ -138,6 +138,6 @@ function validEmail(email) {
   <a href="../../HTML/Meilenstein3/detail.html">Details</a><br>
 
 </div>
-		
+
     </body>
 </html>
