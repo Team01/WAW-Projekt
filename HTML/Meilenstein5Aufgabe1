@@ -7,7 +7,22 @@
     * Datei Name, wo die Daten gespeichert werden
         sollen
     */
-    $dateiname = 'conit.txt';
+    /**$dateiname = 'conit.txt'; */
+	
+	switch ($_POST['messe']){
+		case 'CeBIT':
+			$dateiname = 'cebit.txt';
+			break;
+		case 'ConHIT':
+			$dateiname = 'conhit.txt';
+			break;
+		case 'WebTech':
+			$dateiname = 'webtech.txt';
+			break;
+		default:
+			//nothing
+	}
+	
     /**
     * Prüfen ob die Variable ein Wert zugewiesen
         wurde. Ansonsten werden diese Variablen
@@ -22,7 +37,7 @@
 	if (!isset($_POST['handy'])) $_POST['handy'] =
         '';
     if (!isset($_POST['email'])) $_POST['email'] = '';
-	 if (!isset($_POST['email'])) $_POST['studiengang'] = '';
+	if (!isset($_POST['email'])) $_POST['studiengang'] = '';
     if (!isset($_POST['start'])) $_POST['start'] =
         '';
     $meldung = '';
@@ -32,15 +47,15 @@
     */
     if ($_POST['start'] == 'Anmelden') {
         /**
-        * Zeile aufbauen, die in die CSV-Datei am Ende
+        * Zeile aufbauen, die in die TXT-Datei am Ende
             geschrieben werden soll
         */
         $inhalt =
-            $_POST['vorname'].$_POST['nachname'].';'.$_POST['matrikelnr'].';'.$_POST['email'].';'.$_POST['handy'].';'
-            .$_POST['studiengang'].';'."";
+            $_POST['vorname'].' '.$_POST['nachname'].' '.','.' '.$_POST['matrikelnr'].' '.','.' '.$_POST['email'].' '.','.' '.$_POST['handy'].' '.','
+            .' '.$_POST['studiengang'].';'."";
         /**
         * Datei öffnen und den Dateizeiger auf das
-            Ende der CSV Datei legen, wenn die Datei
+            Ende der TXT Datei legen, wenn die Datei
             noch nicht vorhanden ist wird versucht
             diese anzulegen. Wichtig ist, dass die
             Skriptdatei die Rechte zum anlegen einer
@@ -50,7 +65,7 @@
         /**
         * Schreiben der Zeile, in der .txt Datei
         */
-        fwrite($handle, $inhalt);
+        fwrite($handle, $inhalt."\r\n");
         /**
         * Datei wieder schließen
         */
