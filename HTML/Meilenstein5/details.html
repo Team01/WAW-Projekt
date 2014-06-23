@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Detail</title>
     <link rel="stylesheet" type="text/css" href="../../CSS/Meilenstein3/detailscss.css">
     <script type="text/javascript" src="jquery.js"></script>
@@ -12,35 +12,54 @@ $(document).ready(function(){
     })
      
 function start() {
-  datenInTabelle();
+  sendRequest();
   }
-function datenInTabelle() {
+
+function sendRequest() {
+   var xmlhttp=new XMLHttpRequest();
+   xmlhttp.onreadystatechange=function() {
+   //Wenn der Request ankam und ok (200) war dann tue folgendes:
+   if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+     //der gesendete ResponseText vom Server wird in ein JSON File geparst
+     var jsonObject = $.parseJSON(xmlhttp.responseText);
+     //Hier kann nun normal wie bisher bekannt mit dem JSON-Objekt umgegangen werden.
+     }
+   }
+  //Hier wird angegeben welche HTTP-Methode und an welche PHP-Datei der Request gesendet wird
+  xmlhttp.open("GET","http://localhost/getDetails.php");
+  xmlhttp.send();
+  }
+
   
-  var kostenMesse;
-  var teilnehmerMesse;
+function sendRequest() {
+  
   node = document.getElementById("Tabellen");
-  
-  $.getJSON("kostenMesse.json",function(json) {
-      kostenMesse = json;
-      tabelle1 = erstelleTabelle(kostenMesse.ueberschriftenKosten,kostenMesse.tabelleninhaltKosten);
+  var xmlhttp=new XMLHttpRequest();
+   xmlhttp.onreadystatechange=function() {
+   //Wenn der Request ankam und ok (200) war dann tue folgendes:
+   if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+     //der gesendete ResponseText vom Server wird in ein JSON File geparst
+     var messeDatenJson = $.parseJSON(xmlhttp.responseText);
+     tabelle1 = erstelleTabelle(messeDatenJson.ueberschriftenKosten,messeDatenJson.tabelleninhaltKosten);
       tabelle1.setAttribute("id","tabelleKosten");
         node.appendChild(tabelle1);
-        $.getJSON("teilnehmerMessen.json",function(data) {
-        teilnehmerMesse = data;
-        tabelle2 = erstelleTabelle(teilnehmerMesse.ueberschriftenTeilnehmer,teilnehmerMesse.tabelleninhaltCebit);
+      tabelle2 = erstelleTabelle(messeDatenJson.ueberschriftenTeilnehmer,messeDatenJson.tabelleninhaltCebit);
         tabelle2.setAttribute("id","tabelleCebit");
-        tabelle3 = erstelleTabelle(teilnehmerMesse.ueberschriftenTeilnehmer,teilnehmerMesse.tabelleninhaltConhit);
+        tabelle3 = erstelleTabelle(messeDatenJson.ueberschriftenTeilnehmer,messeDatenJson.tabelleninhaltConhit);
         tabelle3.setAttribute("id","tabelleConhit");
-        tabelle4 = erstelleTabelle(teilnehmerMesse.ueberschriftenTeilnehmer,teilnehmerMesse.tabelleninhaltWebTechCon);
+        tabelle4 = erstelleTabelle(messeDatenJson.ueberschriftenTeilnehmer,messeDatenJson.tabelleninhaltWebTechCon);
         tabelle4.setAttribute("id","tabelleWebTechCon");
         node.appendChild(tabelle2);
         node.appendChild(tabelle3);
         node.appendChild(tabelle4);
         kosten();
-    });
-  });
-
-}
+   }
+    }
+            //Hier wird angegeben welche HTTP-Methode und an welche PHP-Datei der Request gesendet wird
+            xmlhttp.open("GET","http://localhost/getDetails.php");
+            xmlhttp.send();
+        }
+ 
 function erstelleTabelle (ueberschriften,inhalt) {
   var myTable = document.createElement("table");
   var mytablehead = document.createElement("thead");
@@ -78,6 +97,11 @@ function kosten () {
   document.getElementById('tabelleConhit').style.visibility = "hidden";
   document.getElementById('tabelleWebTechCon').style.visibility = "hidden";
   document.getElementById('untermenue').style.visibility = "hidden";
+  
+  document.getElementById('farbe').style.color="#FFFFFF";
+  document.getElementById('messe').style.backgroundColor="blue" ;
+  document.getElementById('personen').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('schrift').style.color="black";
 }
 function cebit () {
   document.getElementById('tabelleCebit').style.visibility = "visible";
@@ -85,22 +109,39 @@ function cebit () {
   document.getElementById('tabelleKosten').style.visibility = "hidden";
   document.getElementById('tabelleConhit').style.visibility = "hidden";
   document.getElementById('tabelleWebTechCon').style.visibility = "hidden";
+  
+  document.getElementById('farbe').style.color="black";
+  document.getElementById('messe').style.backgroundColor="rgb(153,217,234)" ;
+  document.getElementById('personen').style.backgroundColor="blue";
+  document.getElementById('schrift').style.color="white";
+  document.getElementById('Cebit').style.backgroundColor="#6495ed";
+  document.getElementById('Conhit').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('WebTechCon').style.backgroundColor="rgb(153,217,234)";
+  
 }
 function conhit () {
   document.getElementById('tabelleConhit').style.visibility = "visible";
   document.getElementById('tabelleCebit').style.visibility = "hidden";
   document.getElementById('tabelleWebTechCon').style.visibility = "hidden";
+  
+  document.getElementById('Cebit').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('Conhit').style.backgroundColor="#6495ed";
+  document.getElementById('WebTechCon').style.backgroundColor="rgb(153,217,234)";
 
 }
 function webTechCon () {
   document.getElementById('tabelleWebTechCon').style.visibility = "visible";
   document.getElementById('tabelleCebit').style.visibility = "hidden";
   document.getElementById('tabelleConhit').style.visibility = "hidden";
+  
+  document.getElementById('Cebit').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('Conhit').style.backgroundColor="rgb(153,217,234)";
+  document.getElementById('WebTechCon').style.backgroundColor="#6495ed";
 
 }
 </script>  
   </head>
-  <body>
+  <body onload="javascript:kosten()">
         <span id=Logo><img src="../../Bilder/LogoTeam01.png" alt="Logo" border="0" height="20px" width="70px"></span>
     
     <h1 align="center"> Details zur Anmeldung</h1>
@@ -113,15 +154,17 @@ function webTechCon () {
     </table>
     <table border="1" align="center" id="untermenue">
         <tr>
-            <th width=200px id="messe" > <a href="javascript:cebit()"> <span id="farbe">Cebit</span></a> </th>
-            <th width=200px  id="personen" > <a href="javascript:conhit()"> <span id="schrift">Conhit</span> </a> </th>
-            <th width=200px  id="personen" > <a href="javascript:webTechCon()"> <span id="schrift">WebTechCon</span> </a> </th>
+            <th width=200px id="Cebit"> <a href="javascript:cebit()"> <span id="farbeCebit">Cebit</span></a> </th>
+            <th width=200px  id="Conhit" > <a href="javascript:conhit()"> <span id="farbeConhit">Conhit</span> </a> </th>
+            <th width=200px  id="WebTechCon"> <a href="javascript:webTechCon()"> <span id="farbeWebTechCon">WebTechCon</span> </a> </th>
         </tr>
     </table>
     </div>
-    <div id="Tabellen" align ="center">
-      
+    <div id="Tabellen" align ="center">   
     </div>
+    
+    <div>
     <a href="javascript:window.back()" id="zurueck" class="classname">Zur&uuml;ck</a>
+    </div>
   </body>
 </html>
